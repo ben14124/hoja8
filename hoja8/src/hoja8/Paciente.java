@@ -39,7 +39,8 @@ public class Paciente implements Comparable<Paciente> {
     @Override
     public int compareTo(Paciente otroPaciente) {
         int mandar = 0;
-        if(letra > otroPaciente.getLetra()){
+        char letraOtro = otroPaciente.getLetra();
+        if(letra > letraOtro){
             mandar = 1;
         }
         else{
