@@ -24,8 +24,9 @@ public class Driver {
      */
     public static void main(String[] args) {
          boolean hacer = true;
-         File file = new File("diccionario.txt");
+         File file = new File("pacientes.txt");
          int contador = 0;
+         int contador1 = 0;
          int lines = 0;
 
          try {
@@ -37,29 +38,35 @@ public class Driver {
          catch (IOException e){
 
          }
-        String palabras[][] = new String[lines][2];
+        String palabras[][] = new String[lines][3];
         try{
             BufferedReader br = new BufferedReader(new FileReader(file));
             try {
                 for(String line; (line = br.readLine()) != null; ){
                     StringBuilder buildpalabrain = new StringBuilder();
                     StringBuilder buildpalabraes = new StringBuilder();
+                    StringBuilder buildpalabraChar = new StringBuilder();
                     boolean idioma = true; //Si esta en true, significa que es una palabra en ingles. Si esta en false, es una palabra en espanol.
 
-                    for (int x = 1; x<line.length()-1; x++){ //inicia en x = 1 y termina en largo-1 porque el primero y el ultimo son parentesis
+                    for (int x = 0; x<line.length()-1; x++){ //
                         if (line.charAt(x) != 44){
-                            if (idioma==true){ //se obtiene char por char para formar palabra
+                            if (idioma==true && contador1 == 0){ //se obtiene char por char para formar palabra
                                 char c = line.charAt(x);
                                 buildpalabrain.append(c);
                             }
-                            if (idioma==false){
+                            if (idioma==false && contador1 == 1){
                                 char c = line.charAt(x);
                                 buildpalabraes.append(c);
+                            }
+                            if (idioma ==false && contador1 == 2){
+                                char c = line.charAt(x);
+                                buildpalabraChar.append(c);
                             }
                         }
                         if (line.charAt(x) == 44){
                             //Si es una coma, se cambia el idioma a espanol porque la palabra que sigue es la traduccion.
                             idioma = false;
+                            contador1++;
                         }
                         else {
                             //Si es un espacio, no se agrega
@@ -67,95 +74,27 @@ public class Driver {
                     }
                     String palabrain = buildpalabrain.toString();
                     String palabraes = buildpalabraes.toString();
-
+                    String palabraChar = buildpalabraChar.toString();
+                    
+                    palabras[contador][2] = palabraChar; //agregan palabras en array que contiene en espaniol e ingles
                     palabras[contador][1] = palabrain; //agregan palabras en array que contiene en espaniol e ingles
                     palabras[contador][0] = palabraes;
                     contador++;
+                    contador1 = 0;
                 }
             }
             catch(IOException ex) {
-                Logger.getLogger(Hoja7.class.getName()).log(Level.SEVERE, null, ex);
+                
             }
         }
 	catch(FileNotFoundException ex) {
-            Logger.getLogger(Hoja7.class.getName()).log(Level.SEVERE, null, ex);
+            
         }
-        
-        Map arreglo[] = new TreeMap[contador]; //se crea un map con cada una de las palabras
-        
-        for(int y=0; y<contador; y++){
-            arreglo[y] = new TreeMap();
-            arreglo[y].put(palabras[y][0], palabras[y][1]); //se agregan las palabras al maps
+        for(int x=0; x<contador;x++){
+            for(int y=0; y<3; y++){
+                System.out.println(palabras[x][y]);
+            }
         }
-        
-        //se crea la raiz del arbol
-        System.out.println("--");
-        BinaryTree<Map>[] hojastree; //se crean hojas con el numero de palabras restantes
-        hojastree = new BinaryTree[contador];
-        BinaryTree<Map> root = new BinaryTree<>(arreglo[0]);
-        
-        for(int t=1;t<contador;t++){
-            hojastree[t] = new BinaryTree(arreglo[t]);
-            root.insertar(root,hojastree[t]);
-        } 
-        
-        System.out.println("Palabras Ordenadas:");
-        root.inOrder(root);
-        
         System.out.println("\n Texto Traducido \n");
-        
-        //Segundo reader
-        File archivo = new File("texto.txt");
-        int contadorpal = 0;
-        StringBuilder buildpalabra = new StringBuilder();
-        try{
-            BufferedReader br2 = new BufferedReader(new FileReader(archivo));
-            try {
-                for(String line; (line = br2.readLine()) != null; ){
-                    for (int x = 0; x<line.length(); x++){
-                        
-                        if (line.charAt(x)!= 32){ //si todavia no se ha llegado a un enter, se forma la palabra
-                            char d = line.charAt(x);
-                            buildpalabra.append(d);
-                            contadorpal++;
-                        }
-                        
-                        if ((line.charAt(x) == 32) && contadorpal>0){
-                            //mandamos la palabra
-                            String palabramandada = buildpalabra.toString();
-                            String busqueda = root.buscar(root, palabramandada);
-                            buildpalabra = new StringBuilder(); //Reseteamos el StringBuilder
-
-                            if (busqueda == null){
-                                System.out.print(" *" + palabramandada + "* "); //si no se tiene la traduccion, se imprime palabra en ingles
-                            }
-                            else {
-                                System.out.print(" "+busqueda+" "); //si se tiene la traduccion, se imprime palabra en espaniol
-                            }
-                            contadorpal = 0;
-                        }
-                        if( (x == (line.length()-1)) && (line.charAt(line.length()-1) != 32)){ //utilizado para la palabra al final de la oracion
-                            String palabramandada = buildpalabra.toString();
-                            String busqueda = root.buscar(root, palabramandada);
-                            if (busqueda == null){
-                                System.out.print(" *" + palabramandada + "* ");
-                            }
-                            else {
-                                System.out.print(" "+busqueda+" ");
-                            }
-                            buildpalabra = new StringBuilder(); //Reseteamos el StringBuilder
-                        }
-                        
-                    }
-                    System.out.println();
-                }
-            }
-            catch(IOException ex) {
-                Logger.getLogger(Hoja7.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-	catch(FileNotFoundException ex) {
-            Logger.getLogger(Hoja7.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
 }
