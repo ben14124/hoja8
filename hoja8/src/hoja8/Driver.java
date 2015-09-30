@@ -48,7 +48,7 @@ public class Driver {
                     StringBuilder buildpalabraChar = new StringBuilder();
                     boolean idioma = true; //Si esta en true, significa que es una palabra en ingles. Si esta en false, es una palabra en espanol.
 
-                    for (int x = 0; x<line.length()-1; x++){ //
+                    for (int x = 0; x<line.length(); x++){ //
                         if (line.charAt(x) != 44){
                             if (idioma==true && contador1 == 0){ //se obtiene char por char para formar palabra
                                 char c = line.charAt(x);
@@ -67,7 +67,11 @@ public class Driver {
                             //Si es una coma, se cambia el idioma a espanol porque la palabra que sigue es la traduccion.
                             idioma = false;
                             contador1++;
+                            System.out.println(contador1);
                         }
+                        if (line.charAt(x) == 32){
+                            //Si es una coma, se cambia el idioma a espanol porque la palabra que sigue es la traduccion.
+                        }                        
                         else {
                             //Si es un espacio, no se agrega
                         }
@@ -81,6 +85,9 @@ public class Driver {
                     palabras[contador][0] = palabraes;
                     contador++;
                     contador1 = 0;
+                    
+                    
+                    
                 }
             }
             catch(IOException ex) {
@@ -90,11 +97,11 @@ public class Driver {
 	catch(FileNotFoundException ex) {
             
         }
-        for(int x=0; x<contador;x++){
+  /*      for(int x=0; x<contador;x++){
             for(int y=0; y<3; y++){
                 System.out.println(palabras[x][y]);
             }
-        }
+        }*/
         System.out.println("\n Texto Traducido \n");
     }
 }
