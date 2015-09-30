@@ -17,7 +17,7 @@ import java.util.logging.Logger;
  *
  * @author Daniela Pocasangre, Juan Diego Benitez
  */
-public class Hoja8 {
+public class Driver {
 
     /**
      * @param args the command line arguments
