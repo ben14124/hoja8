@@ -102,7 +102,7 @@ public class Driver2 {
         
         while (cola.size() != 0)
         {
-            System.out.println(cola.remove());
+            System.out.println(cola.remove()+"");
         }
         
     }
