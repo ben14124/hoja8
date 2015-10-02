@@ -107,7 +107,7 @@ public class Driver {
 
         while (cola.size() != 0)
         {
-            System.out.println(cola.poll());
+            System.out.println(cola.remove());
         }
         
     }
