@@ -1,4 +1,6 @@
-public interface PriorityQueue<E extends Comparable<E>>
+package hoja8;
+
+public interface PriorityQueue2<E extends Comparable<E>>
 {
 	public E getFirst();
 	// pre: !isEmpty()

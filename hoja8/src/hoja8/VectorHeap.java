@@ -1,7 +1,7 @@
-
+package hoja8;
 import java.util.Vector;
 
-public class VectorHeap<E extends Comparable<E>> implements PriorityQueue<E>
+public class VectorHeap<E extends Comparable<E>> implements PriorityQueue2<E>
 {
 
 	protected Vector<E> data; // the data, kept in heap order
