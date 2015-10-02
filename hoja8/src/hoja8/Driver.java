@@ -14,7 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Clase utilizada como driver para ejecutar la queue
+ * Clase utilizada como driver para ejecutar la queue del JCF
  * @author Daniela Pocasangre, Juan Diego Benitez
  */
 public class Driver {

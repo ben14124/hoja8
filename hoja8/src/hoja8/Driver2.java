@@ -1,8 +1,10 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Hoja de trabajo 8
+ * Heap
+ * Juan Diego Benitez - 14124
+ * Daniela Pocasangre - 14612
  */
+
 package hoja8;
 
 import java.io.BufferedReader;
@@ -12,8 +14,8 @@ import java.io.FileReader;
 import java.io.IOException;
 
 /**
- *
- * @author dbs_jd
+ * Clase utilizada como driver para ejecutar la queue
+ * @author Daniela Pocasangre - Juan Diego Benitez
  */
 public class Driver2 {
     public static void main(String[] args) {
