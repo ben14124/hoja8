@@ -17,22 +17,22 @@ import java.io.IOException;
  */
 public class Driver2 {
     public static void main(String[] args) {
-           File file = new File("pacientes.txt");
-         int contador = 0;
-         int contador1 = 0;
-         int lines = 0;
-         char prioridad = 'a'; //para guardar la prioridad del paciente
+        File file = new File("pacientes.txt");
+        int contador = 0;
+        int contador1 = 0;
+        int lines = 0;
+        char prioridad = 'a'; //para guardar la prioridad del paciente
          
-         try {
-             BufferedReader br2 = new BufferedReader(new FileReader(file));
-             lines = 0;
-             while (br2.readLine() != null) lines++;
-             br2.close();
-         }
-         catch (IOException e){
+        try {
+            BufferedReader br2 = new BufferedReader(new FileReader(file));
+            lines = 0;
+            while (br2.readLine() != null) lines++;
+            br2.close();
+        }
+        catch (IOException e){
 
-         }
-         Paciente pacientes[] = new Paciente[lines];
+        }
+        Paciente pacientes[] = new Paciente[lines];
         try{
             BufferedReader br = new BufferedReader(new FileReader(file));
             try {
