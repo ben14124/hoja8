@@ -1,4 +1,6 @@
 Juan Perez, fractura de pierna, C
-Maria Ramirez, apendicitis, A
-Lorenzo Toledo, chikunguya, E
-Carmen Sarmientos, dolores de parto, B
+Maria Ramirez, apendicitis, E
+Lorenzo Toledo, chikunguya, B
+Carmen Sarmientos, dolores de parto, C
+Jose Ramirez, hepatitis A, D
+Dolores del Carmen, gripe, A
