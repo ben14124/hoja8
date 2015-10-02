@@ -13,13 +13,18 @@ public class VectorHeap<E extends Comparable<E>> implements PriorityQueue2<E>
 {
 
 	protected Vector<E> data; // the data, kept in heap order
-
+/**
+ * Construye una nueva priotity queue
+ */
 	public VectorHeap()
 	// post: constructs a new priority queue
 	{
 		data = new Vector<E>();
 	}
-
+/**
+ * Construye una nueva priotity queue con parametro v
+ * @param v vector con el cual se inicia queue
+ */
 	public VectorHeap(Vector<E> v)
 	// post: constructs a new priority queue from an unordered vector
 	{
@@ -30,27 +35,42 @@ public class VectorHeap<E extends Comparable<E>> implements PriorityQueue2<E>
 			add(v.get(i));
 		}
 	}
+        
+/**
+ * Retorn el padre de un nodo en una locacion i
+ * @param i Locacion del nodo el cual se busca padre
+ */  
+        
 	protected static int parent(int i)
 	// pre: 0 <= i < size
 	// post: returns parent of node at location i
 	{
 		return (i-1)/2;
 	}
-
+/**
+ * Retorna el index del hijo izquierdo del nodo
+ * @param i Locacion del nodo
+ */
 	protected static int left(int i)
 	// pre: 0 <= i < size
 	// post: returns index of left child of node at location i
 	{
 		return 2*i+1;
 	}
-
+/**
+ * Retorna el index del hijo derecho del nodo
+ * @param i Locacion del nodo 
+ */
 	protected static int right(int i)
 	// pre: 0 <= i < size
 	// post: returns index of right child of node at location i
 	{
 		return (2*i+1) + 1;
 	}
-
+/**
+ * Mueve nodo de de la hoja a una posicion
+ * @param leaf Hoja 
+ */
 	protected void percolateUp(int leaf)
 	// pre: 0 <= leaf < size
 	// post: moves node at index leaf up to appropriate position
@@ -66,7 +86,10 @@ public class VectorHeap<E extends Comparable<E>> implements PriorityQueue2<E>
 		}
 		data.set(leaf,value);
 	}
-
+/**
+ * Se aniade un valor a la queue
+ * @param value Valor que se desea agregar 
+ */
 	public void add(E value)
 	// pre: value is non-null comparable
 	// post: value is added to priority queue
@@ -74,7 +97,9 @@ public class VectorHeap<E extends Comparable<E>> implements PriorityQueue2<E>
 		data.add(value);
 		percolateUp(data.size()-1);
 	}
-
+/**
+ * Mueve un nodo a la posicion a la que deberia de estar
+ */
 	protected void pushDownRoot(int root)
 	// pre: 0 <= root < size
 	// post: moves node at index root down
@@ -108,7 +133,9 @@ public class VectorHeap<E extends Comparable<E>> implements PriorityQueue2<E>
 			}
 		}
 	}
-
+/**
+ * Remueve un valor de queue 
+ */
 	public E remove()
 	// pre: !isEmpty()
 	// post: returns and removes minimum value from queue
@@ -121,19 +148,29 @@ public class VectorHeap<E extends Comparable<E>> implements PriorityQueue2<E>
 	}
         
         
-        
-        public E getFirst(){
+/**
+ * Retorna el primer valor de la queue
+ */        public E getFirst(){
             // pre: !isEmpty()
             // post: returns the minimum value in the priority queue
             return data.get(0);
         }
+        
+/**
+ * Retorna si la queue esta vacia
+ */
         public boolean isEmpty(){
             return size() == 0;
         }
-        
+/**
+* Retorna el tamanio del vector de la queue
+*/
         public int size(){
             return data.size();
         }
+/**
+* Remueve todos los elementos de la queue 
+*/
         public void clear(){
             data.clear();
         }
