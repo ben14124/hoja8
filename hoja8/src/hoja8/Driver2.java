@@ -91,5 +91,17 @@ public class Driver2 {
 	catch(FileNotFoundException ex) {
             
         }  
+        
+        VectorHeap<Paciente> cola = new VectorHeap<Paciente>();
+        
+        for (int x = 0; x<contador; x++){
+            cola.add(pacientes[x]);
+        }
+        
+        while (cola.size() != 0)
+        {
+            System.out.println(cola.remove());
+        }
+        
     }
 }
