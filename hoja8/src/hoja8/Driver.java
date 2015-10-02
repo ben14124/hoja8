@@ -14,7 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ * Clase utilizada como driver para ejecutar la queue.
  * @author Daniela Pocasangre, Juan Diego Benitez
  */
 public class Driver {
@@ -30,8 +30,6 @@ public class Driver {
          int lines = 0;
          char prioridad = 'a'; //para guardar la prioridad del paciente
          
-         
-
          try {
              BufferedReader br2 = new BufferedReader(new FileReader(file));
              lines = 0;
@@ -101,9 +99,7 @@ public class Driver {
             
         }
         
-
-            
-        
+ 
    PriorityQueue<Paciente> cola = new PriorityQueue<Paciente>(10, comparator);
    for (int x = 0; x<contador; x++){
        cola.add(pacientes[x]);
