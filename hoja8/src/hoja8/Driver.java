@@ -1,6 +1,6 @@
 /*
  * Hoja de trabajo 8
- * Splay trees
+ * Heap
  * Juan Diego Benitez - 14124
  * Daniela Pocasangre - 14612
  */
@@ -18,16 +18,19 @@ import java.util.logging.Logger;
  * @author Daniela Pocasangre, Juan Diego Benitez
  */
 public class Driver {
+    private static Comparator<Paciente> comparator;
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-         boolean hacer = true;
          File file = new File("pacientes.txt");
          int contador = 0;
          int contador1 = 0;
          int lines = 0;
+         char prioridad = 'a'; //para guardar la prioridad del paciente
+         
+         
 
          try {
              BufferedReader br2 = new BufferedReader(new FileReader(file));
@@ -38,7 +41,7 @@ public class Driver {
          catch (IOException e){
 
          }
-        String palabras[][] = new String[lines][3];
+         Paciente pacientes[] = new Paciente[lines];
         try{
             BufferedReader br = new BufferedReader(new FileReader(file));
             try {
@@ -59,15 +62,16 @@ public class Driver {
                                 buildpalabraes.append(c);
                             }
                             if (idioma ==false && contador1 == 2){
-                                char c = line.charAt(x);
-                                buildpalabraChar.append(c);
+                                prioridad = line.charAt(x);
+                                prioridad = Character.toUpperCase(prioridad);
+
                             }
                         }
                         if (line.charAt(x) == 44){
+                            x = x+1;
                             //Si es una coma, se cambia el idioma a espanol porque la palabra que sigue es la traduccion.
                             idioma = false;
                             contador1++;
-                            System.out.println(contador1);
                         }
                         if (line.charAt(x) == 32){
                             //Si es una coma, se cambia el idioma a espanol porque la palabra que sigue es la traduccion.
@@ -78,11 +82,10 @@ public class Driver {
                     }
                     String palabrain = buildpalabrain.toString();
                     String palabraes = buildpalabraes.toString();
-                    String palabraChar = buildpalabraChar.toString();
                     
-                    palabras[contador][2] = palabraChar; //agregan palabras en array que contiene en espaniol e ingles
-                    palabras[contador][1] = palabrain; //agregan palabras en array que contiene en espaniol e ingles
-                    palabras[contador][0] = palabraes;
+
+                    pacientes[contador] = new Paciente(palabrain, palabraes, prioridad);
+                    
                     contador++;
                     contador1 = 0;
                     
@@ -97,11 +100,19 @@ public class Driver {
 	catch(FileNotFoundException ex) {
             
         }
-  /*      for(int x=0; x<contador;x++){
-            for(int y=0; y<3; y++){
-                System.out.println(palabras[x][y]);
-            }
-        }*/
-        System.out.println("\n Texto Traducido \n");
+        
+
+            
+        
+   PriorityQueue<Paciente> cola = new PriorityQueue<Paciente>(10, comparator);
+   for (int x = 0; x<contador; x++){
+       cola.add(pacientes[x]);
+   }
+
+        while (cola.size() != 0)
+        {
+            System.out.println(cola.poll());
+        }
+        
     }
 }
