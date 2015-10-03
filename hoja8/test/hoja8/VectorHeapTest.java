@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 //package hoja8;
 
 import org.junit.After;
@@ -12,9 +7,11 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-/**
- *
- * @author dbs_jd
+/*
+ * Hoja de trabajo 8
+ * Heap
+ * Juan Diego Benitez - 14124
+ * Daniela Pocasangre - 14612
  */
 public class VectorHeapTest {
     
