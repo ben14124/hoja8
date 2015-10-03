@@ -107,7 +107,7 @@ public class Driver {
         System.out.println("Los pacientes deben de ser atendidos de la siguiente manera: ");
         while (cola.size() != 0)
         {
-            System.out.println(cola.poll());
+            System.out.println(cola.remove());
         }
         
     }
