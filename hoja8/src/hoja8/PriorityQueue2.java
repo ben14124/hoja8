@@ -6,7 +6,7 @@
  */
 
 
-package hoja8;
+//package hoja8;
 
 /**
  * Esta clase es utilizada como interfaz de la priotiry queue
