@@ -9,6 +9,12 @@
 package hoja8;
 import java.util.Vector;
 
+
+/**
+ * Esta clase es utilizada para crear un vectorheap
+ */
+
+
 public class VectorHeap<E extends Comparable<E>> implements PriorityQueue2<E>
 {
 

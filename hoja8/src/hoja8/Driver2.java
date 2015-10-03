@@ -99,7 +99,7 @@ public class Driver2 {
         for (int x = 0; x<contador; x++){
             cola.add(pacientes[x]);
         }
-        System.out.println("Los pacientes deben de ser atendidos de la siguiente manera: ");
+        System.out.println("Programa de atencion de emergencias\nLos pacientes deben de ser atendidos de la siguiente manera: ");
         while (cola.size() != 0)
         {
             System.out.println(cola.remove());
