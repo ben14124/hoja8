@@ -104,7 +104,7 @@ public class Driver {
         for (int x = 0; x<contador; x++){
             cola.add(pacientes[x]);
         }
-
+        System.out.println("Los pacientes deben de ser atendidos de la siguiente manera: ");
         while (cola.size() != 0)
         {
             System.out.println(cola.poll());
